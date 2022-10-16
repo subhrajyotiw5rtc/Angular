@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DemoService } from '../demo.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private demoService: DemoService) { }
+  public userArr: any =[];
 
   ngOnInit(): void {
+    this.userArr = this.demoService.getUserList();
   }
 
 }
