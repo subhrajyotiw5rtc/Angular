@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DemoService {
 
-  constructor() { }
-  public userArr: any = [
-    {"firstname": "John", "lastname": "Doe", "email": "john@example.com"},
-    {"firstname": "subhra", "lastname": "pradhan", "email": "subhra@example.com"},
-    {"firstname": "July", "lastname": "Dooley", "email": "july@example.com"},
-    {"firstname": "test", "lastname": "testlast", "email": "test@example.com"}
-  ]
+  constructor(private http: HttpClient) { }
+  public userArr: any = [];
 
-  getUserList() {
-    return this.userArr;
+  getUserList(): Observable<any> {
+    return this.http.get('assets/users.json').pipe(
+      
+    );
   }
 }

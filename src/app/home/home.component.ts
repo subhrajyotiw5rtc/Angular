@@ -12,7 +12,9 @@ export class HomeComponent implements OnInit {
   public userArr: any =[];
 
   ngOnInit(): void {
-    this.userArr = this.demoService.getUserList();
+    this.demoService.getUserList().subscribe(data => {
+      this.userArr = data;
+    })
   }
 
 }
